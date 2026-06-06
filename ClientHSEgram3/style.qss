@@ -1,0 +1,324 @@
+/* ============================================
+   IMPORT PIXEL FONT
+   ============================================ */
+/* Шрифт подключается через QFontDatabase в main.cpp */
+
+/* ============================================
+   GLOBAL
+   ============================================ */
+* {
+    font-family: 'Press Start 2P';
+    font-size: 7px;
+    outline: none;
+    border: none;
+    color: #c8c8a0;
+}
+
+QMainWindow, QWidget {
+    background-color: #0a0a0a;
+    color: #c8c8a0;
+}
+
+/* ============================================
+   SCROLLBARS — пиксельные
+   ============================================ */
+QScrollBar:vertical {
+    background: #0a0a0a;
+    width: 10px;
+    border-left: 2px solid #2a2a1a;
+}
+
+QScrollBar::handle:vertical {
+    background: #3a3a1a;
+    border: 2px solid #6a6a2a;
+    min-height: 20px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #5a5a20;
+    border-color: #aaaa40;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    background: #1a1a0a;
+    height: 10px;
+    border: 1px solid #2a2a1a;
+}
+
+QScrollBar::add-line:vertical {
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical {
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar:horizontal {
+    height: 0px;
+    background: transparent;
+}
+
+/* ============================================
+   QLISTVIEW
+   ============================================ */
+QListView {
+    background-color: #0a0a0a;
+    border: none;
+    outline: none;
+    padding: 2px;
+    color: #c8c8a0;
+}
+
+QListView::item {
+    background: transparent;
+    color: #c8c8a0;
+    padding: 6px 4px;
+    border-bottom: 1px solid #1a1a0a;
+}
+
+QListView::item:selected {
+    background-color: #1a2a0a;
+    color: #aaff44;
+    border-left: 3px solid #aaff44;
+}
+
+QListView::item:hover:!selected {
+    background-color: #111108;
+    color: #dddd88;
+}
+
+/* ============================================
+   LINE EDITS
+   ============================================ */
+QLineEdit {
+    background-color: #0f0f0a;
+    color: #aaff44;
+    border: 2px solid #2a3a10;
+    border-radius: 0px;
+    padding: 6px 10px;
+    selection-background-color: #2a4a10;
+    selection-color: #aaff44;
+    font-family: 'Press Start 2P';
+    font-size: 7px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #aaff44;
+    background-color: #0d0f08;
+    color: #ccff66;
+}
+
+QLineEdit:hover {
+    border: 2px solid #5a7a20;
+}
+
+QLineEdit[readOnly="true"] {
+    background-color: #080808;
+    color: #6a8a30;
+    border: 2px solid #1a2a08;
+}
+
+/* ============================================
+   PUSH BUTTONS — пиксельные с «тенью»
+   ============================================ */
+QPushButton {
+    background-color: #1a2a08;
+    color: #aaff44;
+    border: 2px solid #5a8a20;
+    border-radius: 0px;
+    padding: 8px 14px;
+    font-family: 'Press Start 2P';
+    font-size: 7px;
+    /* Эффект «выдавленной» пиксельной кнопки */
+    border-right-color:  #1a3a08;
+    border-bottom-color: #1a3a08;
+    border-left-color:   #8acc30;
+    border-top-color:    #8acc30;
+}
+
+QPushButton:hover {
+    background-color: #243a0c;
+    color: #ccff66;
+    border-right-color:  #2a4a10;
+    border-bottom-color: #2a4a10;
+    border-left-color:   #aaff44;
+    border-top-color:    #aaff44;
+}
+
+QPushButton:pressed {
+    background-color: #111a06;
+    color: #88cc33;
+    /* Инвертируем тень при нажатии */
+    border-right-color:  #8acc30;
+    border-bottom-color: #8acc30;
+    border-left-color:   #1a3a08;
+    border-top-color:    #1a3a08;
+    padding-top: 9px;
+    padding-bottom: 7px;
+    padding-left: 15px;
+    padding-right: 13px;
+}
+
+QPushButton:disabled {
+    background-color: #0f0f0a;
+    color: #333322;
+    border-color: #222210;
+}
+
+/* Кнопка отправки */
+QPushButton#sendmes {
+    background-color: #1a2a08;
+    border: 2px solid #5a8a20;
+    border-right-color:  #1a3a08;
+    border-bottom-color: #1a3a08;
+    border-left-color:   #8acc30;
+    border-top-color:    #8acc30;
+    padding: 0px;
+    min-width: 44px;
+    min-height: 44px;
+    max-width: 44px;
+    max-height: 44px;
+    border-radius: 0px;
+}
+
+QPushButton#sendmes:hover {
+    background-color: #243a0c;
+}
+
+QPushButton#sendmes:pressed {
+    background-color: #111a06;
+    border-right-color:  #8acc30;
+    border-bottom-color: #8acc30;
+    border-left-color:   #1a3a08;
+    border-top-color:    #1a3a08;
+}
+
+/* Кнопка добавления диалога */
+QPushButton#searchDialog {
+    background-color: #1a1a08;
+    color: #aaff44;
+    border: 2px solid #4a6a18;
+    border-right-color:  #1a2a08;
+    border-bottom-color: #1a2a08;
+    border-left-color:   #6a9a28;
+    border-top-color:    #6a9a28;
+    min-width: 36px;
+    max-width: 36px;
+    min-height: 36px;
+    max-height: 36px;
+    font-size: 14px;
+    border-radius: 0px;
+}
+
+QPushButton#searchDialog:hover {
+    background-color: #223010;
+    color: #ccff66;
+}
+
+QPushButton#searchDialog:pressed {
+    border-right-color:  #6a9a28;
+    border-bottom-color: #6a9a28;
+    border-left-color:   #1a2a08;
+    border-top-color:    #1a2a08;
+}
+
+/* ============================================
+   LABELS
+   ============================================ */
+QLabel {
+    color: #c8c8a0;
+    background: transparent;
+    font-family: 'Press Start 2P';
+    font-size: 7px;
+}
+
+/* ============================================
+   FRAMES / PANELS
+   ============================================ */
+QWidget#leftPanel {
+    background-color: #080808;
+    border-right: 2px solid #1e2a08;
+}
+
+QWidget#rightPanel {
+    background-color: #0a0a0a;
+}
+
+QWidget#leftHeader {
+    background-color: #050505;
+    border-bottom: 2px solid #1e2a08;
+}
+
+QWidget#headerPanel {
+    background-color: #050505;
+    border-bottom: 2px solid #1e2a08;
+}
+
+QWidget#inputPanel {
+    background-color: #080808;
+    border-top: 2px solid #1e2a08;
+}
+
+QWidget#searchWidget {
+    background: transparent;
+}
+
+/* ============================================
+   MESSAGE BOX
+   ============================================ */
+QMessageBox {
+    background-color: #0a0a0a;
+    color: #c8c8a0;
+    border: 2px solid #5a8a20;
+    font-family: 'Press Start 2P';
+}
+
+QMessageBox QLabel {
+    color: #c8c8a0;
+    font-size: 7px;
+    font-family: 'Press Start 2P';
+}
+
+QMessageBox QPushButton {
+    min-width: 80px;
+    min-height: 30px;
+}
+
+/* ============================================
+   TOOLTIP
+   ============================================ */
+QToolTip {
+    background-color: #0a0f04;
+    color: #aaff44;
+    border: 2px solid #5a8a20;
+    border-radius: 0px;
+    padding: 4px 8px;
+    font-family: 'Press Start 2P';
+    font-size: 6px;
+}
+
+/* ============================================
+   LOGIN / REG CARDS
+   ============================================ */
+QFrame#loginCard,
+QFrame#regCard {
+    background-color: #080808;
+    border: 2px solid #2a3a10;
+    /* Пиксельная тень */
+    border-right-color:  #0f1a04;
+    border-bottom-color: #0f1a04;
+    border-left-color:   #3a5a18;
+    border-top-color:    #3a5a18;
+    border-radius: 0px;
+    padding: 20px;
+}
+
+/* ============================================
+   STACKEDWIDGET
+   ============================================ */
+QStackedWidget {
+    background-color: #0a0a0a;
+}

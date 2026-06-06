@@ -1,0 +1,120 @@
+\doxysection{Класс Hse\+Server}
+\hypertarget{class_hse_server}{}\label{class_hse_server}\index{HseServer@{HseServer}}
+
+
+Сетевой TCP-\/сервер мессенджера на базе QTcp\+Server.  
+
+
+
+
+{\ttfamily \+\#include $<$hseserver.\+h$>$}
+
+Граф наследования:\+Hse\+Server:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_hse_server}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_hse_server_1_1_session}{Session}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые слоты}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_hse_server_a5654e00688aee81bc0be6b9b29c18d0c}{start\+Server}} ()
+\begin{DoxyCompactList}\small\item\em Запускает сетевой сервер и инициализирует базу данных. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_hse_server_af66caf723857cacc4d2911f50c902662}{Hse\+Server}} (QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \doxylink{class_hse_server}{Hse\+Server}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_hse_server_aa63a68e2037a5907561e7db03309aa29}{\texorpdfstring{$\sim$}{\string~}\+Hse\+Server}} ()
+\begin{DoxyCompactList}\small\item\em Деструктор класса \doxylink{class_hse_server}{Hse\+Server}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_hse_server_af61dea12ef955e62ed6bc4049d8a1119}\label{class_hse_server_af61dea12ef955e62ed6bc4049d8a1119} 
+QHash$<$ QTcp\+Socket \texorpdfstring{$\ast$}{*}, \doxymbox{\hyperlink{struct_hse_server_1_1_session}{Session}} $>$ {\bfseries sessions}
+\item 
+\Hypertarget{class_hse_server_aea5692586507cbdc2ed293e85369ed03}\label{class_hse_server_aea5692586507cbdc2ed293e85369ed03} 
+QHash$<$ int, QTcp\+Socket \texorpdfstring{$\ast$}{*} $>$ {\bfseries online\+Users}
+\item 
+\Hypertarget{class_hse_server_a33f99b7117183a130760066eb50d78b4}\label{class_hse_server_a33f99b7117183a130760066eb50d78b4} 
+QByte\+Array {\bfseries Data}
+\item 
+\Hypertarget{class_hse_server_aaaebf7999ed41bae112a0d5c7992812f}\label{class_hse_server_aaaebf7999ed41bae112a0d5c7992812f} 
+QJson\+Document {\bfseries doc}
+\item 
+\Hypertarget{class_hse_server_ad244e86745f896f60c9fd6fa90fd6920}\label{class_hse_server_ad244e86745f896f60c9fd6fa90fd6920} 
+QJson\+Parse\+Error {\bfseries doc\+Error}
+\item 
+\Hypertarget{class_hse_server_a51f67f5bbd18bf25c4e40653a4aa0318}\label{class_hse_server_a51f67f5bbd18bf25c4e40653a4aa0318} 
+QSql\+Database {\bfseries db}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Сетевой TCP-\/сервер мессенджера на базе QTcp\+Server. 
+
+
+\begin{DoxyItemize}
+\item Осуществляет координацию клиентов, централизованное хранение сообщений в SQLite, распределение публичных криптографических ключей участников для организации E2\+E-\/шифрования, а также проверку подлинности сессий. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_hse_server_doc-constructors}
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_hse_server_af66caf723857cacc4d2911f50c902662}\index{HseServer@{HseServer}!HseServer@{HseServer}}
+\index{HseServer@{HseServer}!HseServer@{HseServer}}
+\doxysubsubsection{\texorpdfstring{HseServer()}{HseServer()}}
+{\footnotesize\ttfamily \label{class_hse_server_af66caf723857cacc4d2911f50c902662} 
+Hse\+Server::\+\+Hse\+Server (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Конструктор класса \doxylink{class_hse_server}{Hse\+Server}. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em parent} & Указатель на родительский объект QObject. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_hse_server_aa63a68e2037a5907561e7db03309aa29}\index{HseServer@{HseServer}!````~HseServer@{\texorpdfstring{$\sim$}{\string~}HseServer}}
+\index{````~HseServer@{\texorpdfstring{$\sim$}{\string~}HseServer}!HseServer@{HseServer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}HseServer()}{\string~HseServer()}}
+{\footnotesize\ttfamily \label{class_hse_server_aa63a68e2037a5907561e7db03309aa29} 
+Hse\+Server::\+\texorpdfstring{$\sim$}{\string~}\+Hse\+Server (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Деструктор класса \doxylink{class_hse_server}{Hse\+Server}. 
+
+
+\begin{DoxyItemize}
+\item Освобождает ресурсы, используемые сервером. 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{class_hse_server_doc-func-members}
+\doxysubsection{Методы}
+\Hypertarget{class_hse_server_a5654e00688aee81bc0be6b9b29c18d0c}\index{HseServer@{HseServer}!startServer@{startServer}}
+\index{startServer@{startServer}!HseServer@{HseServer}}
+\doxysubsubsection{\texorpdfstring{startServer}{startServer}}
+{\footnotesize\ttfamily \label{class_hse_server_a5654e00688aee81bc0be6b9b29c18d0c} 
+void Hse\+Server::\+start\+Server (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Запускает сетевой сервер и инициализирует базу данных. 
+
+
+\begin{DoxyItemize}
+\item Поднимает прослушивание (listening) на локальном адресе {\ttfamily Local\+Host} и порту {\ttfamily 5531}. В случае успеха настраивает и открывает подключение к SQLite базе данных {\ttfamily hse\+DB.\+db}. 
+\end{DoxyItemize}
+
+Объявления и описания членов классов находятся в файлах:\+\begin{DoxyCompactItemize}
+\item 
+hseserver.\+h\item 
+hseserver.\+cpp\end{DoxyCompactItemize}

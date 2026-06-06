@@ -1,0 +1,31 @@
+\doxysection{cryptoengine.\+h}
+\hypertarget{cryptoengine_8h_source}{}\label{cryptoengine_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CRYPTOENGINE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CRYPTOENGINE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QByteArray>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QPair>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QJsonObject>}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_crypto_engine_aa3d51f9c90250aee777dd0ac19e8c92c}{CryptoEngine}}\ :\ \textcolor{keyword}{public}\ QObject}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_crypto_engine_aa3d51f9c90250aee777dd0ac19e8c92c}{CryptoEngine}}(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_crypto_engine_a64ccd91ee4e3a2ee152f30989bea4979}{init}}();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ QPair<QByteArray,\ QByteArray>\ \doxymbox{\hyperlink{class_crypto_engine_ae07081c7df0702c380faff55193f5c3f}{GenerateKeyPair}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ QByteArray\ \doxymbox{\hyperlink{class_crypto_engine_a2b662f6d4ed01326daa513eaca4d7313}{FindSharedKey}}(\textcolor{keyword}{const}\ QByteArray\ \&myPrivateKey,\ \textcolor{keyword}{const}\ QByteArray\ \&theirPublicKey);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{static}\ QJsonObject\ \doxymbox{\hyperlink{class_crypto_engine_ad596ff4a896d92f75a901c0cc44f8c42}{encryptMessage}}(\textcolor{keyword}{const}\ QString\ \&message,\ \textcolor{keyword}{const}\ QByteArray\ \&sharedKey);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ QString\ \doxymbox{\hyperlink{class_crypto_engine_add082d57d522a77ff1cd4bf2a4dc8df8}{decryptMessage}}(\textcolor{keyword}{const}\ QJsonObject\ \&payload,\ \textcolor{keyword}{const}\ QByteArray\ \&sharedKey);}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CRYPTOENGINE\_H}}
+
+\end{DoxyCode}

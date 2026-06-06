@@ -1,0 +1,55 @@
+\doxysection{hseserver.\+h}
+\hypertarget{hseserver_8h_source}{}\label{hseserver_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ HSESERVER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ HSESERVER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QtNetwork/QTcpServer>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QtNetwork/QTcpSocket>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QJsonDocument>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QJsonParseError>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QJsonObject>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QSqlDatabase>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QSqlQuery>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QFileInfo>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QSqlError>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QHash>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QJsonArray>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}sodium.h"{}}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_hse_server_af66caf723857cacc4d2911f50c902662}{HseServer}}\ :\ \textcolor{keyword}{public}\ QTcpServer}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_hse_server_af66caf723857cacc4d2911f50c902662}{HseServer}}(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00030\ \ \ \ \ \doxymbox{\hyperlink{class_hse_server_aa63a68e2037a5907561e7db03309aa29}{\string~HseServer}}();}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_hse_server_1_1_session}{Session}}\{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ authed\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ user\_id;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ QString\ login;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ QByteArray\ buffer;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \};}
+\DoxyCodeLine{00038\ \ \ \ \ QHash<QTcpSocket*,\ Session>\ sessions;}
+\DoxyCodeLine{00039\ \ \ \ \ QHash<int,\ QTcpSocket*>\ onlineUsers;}
+\DoxyCodeLine{00040\ \ \ \ \ QByteArray\ Data;}
+\DoxyCodeLine{00041\ \ \ \ \ QJsonDocument\ doc;}
+\DoxyCodeLine{00042\ \ \ \ \ QJsonParseError\ docError;}
+\DoxyCodeLine{00043\ \ \ \ \ QSqlDatabase\ db;}
+\DoxyCodeLine{00044\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_hse_server_a5654e00688aee81bc0be6b9b29c18d0c}{startServer}}();}
+\DoxyCodeLine{00046\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00047\ \ \ \ \ QJsonArray\ dialogsHandle(QTcpSocket\ *socket,\ QSqlDatabase\ db);}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ historyHandle(QTcpSocket\ *socket,\ \textcolor{keywordtype}{int}\ DialogId,\ \textcolor{keywordtype}{int}\ limit);}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ incomingConnection(qintptr\ socketDescrtiptor);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ sockReady();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ sockDisc();}
+\DoxyCodeLine{00052\ \ \ \ \ QString\ checkLogin(QSqlDatabase\ db,\ \textcolor{keyword}{const}\ QString\ \&login);}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ UserIdByLogin(QSqlDatabase\ db,\ QString\ \&login);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ dialogIdForUsers(QSqlDatabase\ db,\ \textcolor{keywordtype}{int}\ idA,\ \textcolor{keywordtype}{int}\ idB);}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ HSESERVER\_H}}
+
+\end{DoxyCode}

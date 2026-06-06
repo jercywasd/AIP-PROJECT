@@ -1,0 +1,157 @@
+\doxysection{Класс Main\+Window}
+\hypertarget{class_main_window}{}\label{class_main_window}\index{MainWindow@{MainWindow}}
+
+
+Класс окна авторизации и регистрации пользователей.  
+
+
+
+
+{\ttfamily \+\#include $<$mainwindow.\+h$>$}
+
+Граф наследования:\+Main\+Window:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_main_window}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_main_window_1_1_clients_buff}{Clients\+Buff}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые слоты}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_main_window_a27cf1bb58f9bae3ee1e14472c0de0969}{sock\+Ready}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки входящих данных от сервера (ready\+Read). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_main_window_abfdc562b31ebb190211fba40fd85824e}{sock\+Disc}} ()
+\begin{DoxyCompactList}\small\item\em Слот-\/обработчик закрытия или принудительного разрыва сетевого соединения. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_main_window_a95c5779447a66e87120526d332aaef1f}{on\+Connected}} ()
+\begin{DoxyCompactList}\small\item\em Слот-\/обработчик успешного установления сетевого соединения (connected). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{Main\+Window}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \doxylink{class_main_window}{Main\+Window}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{\texorpdfstring{$\sim$}{\string~}\+Main\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Деструктор класса \doxylink{class_main_window}{Main\+Window}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_main_window_a5c7844b6908ea0f34cd8f5a69366152c}\label{class_main_window_a5c7844b6908ea0f34cd8f5a69366152c} 
+\doxymbox{\hyperlink{class_chat_window}{Chat\+Window}} \texorpdfstring{$\ast$}{*} {\bfseries chat\+Win}
+\item 
+\Hypertarget{class_main_window_af85cfe62c116f8d2f2021e5411b0356e}\label{class_main_window_af85cfe62c116f8d2f2021e5411b0356e} 
+QTcp\+Socket \texorpdfstring{$\ast$}{*} {\bfseries socket}
+\item 
+\Hypertarget{class_main_window_a4338481359e3e8145930703e0089340f}\label{class_main_window_a4338481359e3e8145930703e0089340f} 
+QString {\bfseries login}
+\item 
+\Hypertarget{class_main_window_a91a6fab2e54e06c8068983ab9f176ec8}\label{class_main_window_a91a6fab2e54e06c8068983ab9f176ec8} 
+QByte\+Array {\bfseries pending\+Data}
+\item 
+\Hypertarget{class_main_window_a689ef2bad33b84097df953df8b6e0900}\label{class_main_window_a689ef2bad33b84097df953df8b6e0900} 
+QJson\+Document {\bfseries doc}
+\item 
+\Hypertarget{class_main_window_a410c5b932a16cdffcff12de6fd612863}\label{class_main_window_a410c5b932a16cdffcff12de6fd612863} 
+QJson\+Parse\+Error {\bfseries doc\+Error}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс окна авторизации и регистрации пользователей. 
+
+
+\begin{DoxyItemize}
+\item Предоставляет графический интерфейс (GUI) для ввода учетных данных, выполняет клиентскую валидацию строк, осуществляет криптографическую защиту паролей с помощью Argon2id и управляет жизненным циклом сетевого сокета до момента входа в чат. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_main_window_doc-constructors}
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_main_window_a996c5a2b6f77944776856f08ec30858d}\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{MainWindow()}{MainWindow()}}
+{\footnotesize\ttfamily \label{class_main_window_a996c5a2b6f77944776856f08ec30858d} 
+Main\+Window::\+\+Main\+Window (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})}
+
+
+
+Конструктор класса \doxylink{class_main_window}{Main\+Window}. 
+
+
+\begin{DoxyItemize}
+\item Инициализирует форму стартового окна, создает объект сетевого сокета {\ttfamily QTcp\+Socket} и связывает его ключевые сигналы ({\ttfamily ready\+Read}, {\ttfamily disconnected}, {\ttfamily connected}) с соответствующими слотами.
+\item 
+\begin{DoxyParams}{Аргументы}
+{\em parent} & Указатель на родительский виджет. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}\index{MainWindow@{MainWindow}!````~MainWindow@{\texorpdfstring{$\sim$}{\string~}MainWindow}}
+\index{````~MainWindow@{\texorpdfstring{$\sim$}{\string~}MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}MainWindow()}{\string~MainWindow()}}
+{\footnotesize\ttfamily \label{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7} 
+Main\+Window::\+\texorpdfstring{$\sim$}{\string~}\+Main\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Деструктор класса \doxylink{class_main_window}{Main\+Window}. 
+
+
+\begin{DoxyItemize}
+\item Освобождает память, выделенную под графический интерфейс. 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{class_main_window_doc-func-members}
+\doxysubsection{Методы}
+\Hypertarget{class_main_window_a95c5779447a66e87120526d332aaef1f}\index{MainWindow@{MainWindow}!onConnected@{onConnected}}
+\index{onConnected@{onConnected}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{onConnected}{onConnected}}
+{\footnotesize\ttfamily \label{class_main_window_a95c5779447a66e87120526d332aaef1f} 
+void Main\+Window::\+on\+Connected (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот-\/обработчик успешного установления сетевого соединения (connected). 
+
+
+\begin{DoxyItemize}
+\item Проверяет наличие подготовленных к отправке отложенных данных в {\ttfamily pending\+Data}. Если данные есть, отправляет их в сокет и очищает буфер. 
+\end{DoxyItemize}\Hypertarget{class_main_window_abfdc562b31ebb190211fba40fd85824e}\index{MainWindow@{MainWindow}!sockDisc@{sockDisc}}
+\index{sockDisc@{sockDisc}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{sockDisc}{sockDisc}}
+{\footnotesize\ttfamily \label{class_main_window_abfdc562b31ebb190211fba40fd85824e} 
+void Main\+Window::\+sock\+Disc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот-\/обработчик закрытия или принудительного разрыва сетевого соединения. 
+
+
+\begin{DoxyItemize}
+\item Планирует безопасное уничтожение объекта сокета через {\ttfamily delete\+Later()}. 
+\end{DoxyItemize}\Hypertarget{class_main_window_a27cf1bb58f9bae3ee1e14472c0de0969}\index{MainWindow@{MainWindow}!sockReady@{sockReady}}
+\index{sockReady@{sockReady}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{sockReady}{sockReady}}
+{\footnotesize\ttfamily \label{class_main_window_a27cf1bb58f9bae3ee1e14472c0de0969} 
+void Main\+Window::\+sock\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки входящих данных от сервера (ready\+Read). 
+
+
+\begin{DoxyItemize}
+\item Читает входящий поток байт, преобразует его в JSON-\/документ и маршрутизирует логику в зависимости от ответа сервера:\+
+\item {\ttfamily "{}type"{}:\+ "{}login"{}} при успехе отключает сигналы, динамически создает {\ttfamily \doxylink{class_chat_window}{Chat\+Window}}, передает ему сокет, делает окно чата главным и скрывает текущее окно авторизации.
+\item {\ttfamily "{}type"{}:\+ "{}askhash"{}} сверяет введенный пользователем пароль с полученным хэшем Argon2id. При совпадении формирует запрос на авторизацию и инициирует (или использует) подключение к серверу.
+\item {\ttfamily "{}type"{}:\+ "{}check\+\_\+login"{}} при успешной предварительной проверке логина хэширует пароль через Argon2id, отправляет финальный пакет регистрации {\ttfamily "{}type"{}:\+ "{}reg"{}} и переключает интерфейс на форму входа. 
+\end{DoxyItemize}
+
+Объявления и описания членов классов находятся в файлах:\+\begin{DoxyCompactItemize}
+\item 
+mainwindow.\+h\item 
+mainwindow.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,182 @@
+\doxysection{Класс Crypto\+Engine}
+\hypertarget{class_crypto_engine}{}\label{class_crypto_engine}\index{CryptoEngine@{CryptoEngine}}
+
+
+Класс-\/утилита для выполнения криптографических операций.  
+
+
+
+
+{\ttfamily \+\#include $<$cryptoengine.\+h$>$}
+
+Граф наследования:\+Crypto\+Engine:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_crypto_engine}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_crypto_engine_aa3d51f9c90250aee777dd0ac19e8c92c}{Crypto\+Engine}} (QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \doxylink{class_crypto_engine}{Crypto\+Engine}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static bool \doxymbox{\hyperlink{class_crypto_engine_a64ccd91ee4e3a2ee152f30989bea4979}{init}} ()
+\begin{DoxyCompactList}\small\item\em Инициализирует библиотеку libsodium. \end{DoxyCompactList}\item 
+static QPair$<$ QByte\+Array, QByte\+Array $>$ \doxymbox{\hyperlink{class_crypto_engine_ae07081c7df0702c380faff55193f5c3f}{Generate\+Key\+Pair}} ()
+\begin{DoxyCompactList}\small\item\em Генерирует новую асимметричную пару ключей (публичный и приватный). \end{DoxyCompactList}\item 
+static QByte\+Array \doxymbox{\hyperlink{class_crypto_engine_a2b662f6d4ed01326daa513eaca4d7313}{Find\+Shared\+Key}} (const QByte\+Array \&my\+Private\+Key, const QByte\+Array \&their\+Public\+Key)
+\begin{DoxyCompactList}\small\item\em Вычисляет общий секретный ключ (Shared Key) на основе схемы Диффи-\/Хеллмана. \end{DoxyCompactList}\item 
+static QJson\+Object \doxymbox{\hyperlink{class_crypto_engine_ad596ff4a896d92f75a901c0cc44f8c42}{encrypt\+Message}} (const QString \&message, const QByte\+Array \&shared\+Key)
+\begin{DoxyCompactList}\small\item\em Шифрует текстовое сообщение с использованием алгоритма Cha\+Cha20-\/\+Poly1305 (IETF). \end{DoxyCompactList}\item 
+static QString \doxymbox{\hyperlink{class_crypto_engine_add082d57d522a77ff1cd4bf2a4dc8df8}{decrypt\+Message}} (const QJson\+Object \&payload, const QByte\+Array \&shared\+Key)
+\begin{DoxyCompactList}\small\item\em Расшифровывает сообщение, зашифрованное алгоритмом Cha\+Cha20-\/\+Poly1305 (IETF). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс-\/утилита для выполнения криптографических операций. 
+
+
+\begin{DoxyItemize}
+\item Обертка над библиотекой libsodium, предоставляющая методы для генерации ключей X25519, вычисления сессионных ключей (Shared Key) и симметричного шифрования/\+дешифрования сообщений по алгоритму Cha\+Cha20-\/\+Poly1305. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_crypto_engine_doc-constructors}
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_crypto_engine_aa3d51f9c90250aee777dd0ac19e8c92c}\index{CryptoEngine@{CryptoEngine}!CryptoEngine@{CryptoEngine}}
+\index{CryptoEngine@{CryptoEngine}!CryptoEngine@{CryptoEngine}}
+\doxysubsubsection{\texorpdfstring{CryptoEngine()}{CryptoEngine()}}
+{\footnotesize\ttfamily \label{class_crypto_engine_aa3d51f9c90250aee777dd0ac19e8c92c} 
+Crypto\+Engine::\+\+Crypto\+Engine (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Конструктор класса \doxylink{class_crypto_engine}{Crypto\+Engine}. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em parent} & Указатель на родительский объект QObject. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_crypto_engine_doc-func-members}
+\doxysubsection{Методы}
+\Hypertarget{class_crypto_engine_add082d57d522a77ff1cd4bf2a4dc8df8}\index{CryptoEngine@{CryptoEngine}!decryptMessage@{decryptMessage}}
+\index{decryptMessage@{decryptMessage}!CryptoEngine@{CryptoEngine}}
+\doxysubsubsection{\texorpdfstring{decryptMessage()}{decryptMessage()}}
+{\footnotesize\ttfamily \label{class_crypto_engine_add082d57d522a77ff1cd4bf2a4dc8df8} 
+QString Crypto\+Engine::\+decrypt\+Message (\begin{DoxyParamCaption}\item[{const QJson\+Object \&}]{payload}{, }\item[{const QByte\+Array \&}]{shared\+Key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Расшифровывает сообщение, зашифрованное алгоритмом Cha\+Cha20-\/\+Poly1305 (IETF). 
+
+
+\begin{DoxyItemize}
+\item Извлекает зашифрованный текст и nonce из JSON-\/объекта, декодирует их из Base64, проверяет целостность данных (имитовставку Poly1305) и подлинность сообщения. Если данные были изменены в процессе передачи, расшифровка завершится ошибкой.
+\item 
+\begin{DoxyParams}{Аргументы}
+{\em payload} & JSON-\/объект с полями "{}ciphertext"{} и "{}nonce"{} в формате Base64. \\
+\hline
+{\em shared\+Key} & Общий секретный сессионный ключ. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+QString Восстановленный открытый текст (в UTF-\/8), либо сообщение об ошибке в случае нарушения целостности или невалидных ключей. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{class_crypto_engine_ad596ff4a896d92f75a901c0cc44f8c42}\index{CryptoEngine@{CryptoEngine}!encryptMessage@{encryptMessage}}
+\index{encryptMessage@{encryptMessage}!CryptoEngine@{CryptoEngine}}
+\doxysubsubsection{\texorpdfstring{encryptMessage()}{encryptMessage()}}
+{\footnotesize\ttfamily \label{class_crypto_engine_ad596ff4a896d92f75a901c0cc44f8c42} 
+QJson\+Object Crypto\+Engine::\+encrypt\+Message (\begin{DoxyParamCaption}\item[{const QString \&}]{message}{, }\item[{const QByte\+Array \&}]{shared\+Key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Шифрует текстовое сообщение с использованием алгоритма Cha\+Cha20-\/\+Poly1305 (IETF). 
+
+
+\begin{DoxyItemize}
+\item Функция преобразует строку в UTF-\/8, генерирует случайный одноразовый код (nonce) с помощью криптографически стойкого генератора {\ttfamily randombytes\+\_\+buf} и выполняет шифрование с аутентификацией данных (AEAD). Результат упаковывается в JSON.
+\item 
+\begin{DoxyParams}{Аргументы}
+{\em message} & Исходный открытый текст сообщения. \\
+\hline
+{\em shared\+Key} & Общий секретный сессионный ключ. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+QJson\+Object JSON-\/объект, содержащий зашифрованный текст ("{}ciphertext"{}) и одноразовый код ("{}nonce"{}), закодированные в Base64. В случае ошибки возвращает пустой объект. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{class_crypto_engine_a2b662f6d4ed01326daa513eaca4d7313}\index{CryptoEngine@{CryptoEngine}!FindSharedKey@{FindSharedKey}}
+\index{FindSharedKey@{FindSharedKey}!CryptoEngine@{CryptoEngine}}
+\doxysubsubsection{\texorpdfstring{FindSharedKey()}{FindSharedKey()}}
+{\footnotesize\ttfamily \label{class_crypto_engine_a2b662f6d4ed01326daa513eaca4d7313} 
+QByte\+Array Crypto\+Engine::\+\+Find\+Shared\+Key (\begin{DoxyParamCaption}\item[{const QByte\+Array \&}]{my\+Private\+Key}{, }\item[{const QByte\+Array \&}]{their\+Public\+Key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Вычисляет общий секретный ключ (Shared Key) на основе схемы Диффи-\/Хеллмана. 
+
+
+\begin{DoxyItemize}
+\item Функция {\ttfamily crypto\+\_\+box\+\_\+beforenm} выполняет скалярное умножение на эллиптической кривой X25519, используя собственный приватный ключ и публичный ключ собеседника. Полученный результат далее используется для симметричного шифрования сообщений.
+\item 
+\begin{DoxyParams}{Аргументы}
+{\em my\+Private\+Key} & Свой приватный ключ (размером crypto\+\_\+box\+\_\+\+SECRETKEYBYTES). \\
+\hline
+{\em their\+Public\+Key} & Публичный ключ собеседника (размером crypto\+\_\+box\+\_\+\+PUBLICKEYBYTES). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+QByte\+Array Общий секретный ключ (размером crypto\+\_\+box\+\_\+\+BEFORENMBYTES), либо пустой массив в случае ошибки. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{class_crypto_engine_ae07081c7df0702c380faff55193f5c3f}\index{CryptoEngine@{CryptoEngine}!GenerateKeyPair@{GenerateKeyPair}}
+\index{GenerateKeyPair@{GenerateKeyPair}!CryptoEngine@{CryptoEngine}}
+\doxysubsubsection{\texorpdfstring{GenerateKeyPair()}{GenerateKeyPair()}}
+{\footnotesize\ttfamily \label{class_crypto_engine_ae07081c7df0702c380faff55193f5c3f} 
+QPair$<$ QByte\+Array, QByte\+Array $>$ Crypto\+Engine::\+\+Generate\+Key\+Pair (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Генерирует новую асимметричную пару ключей (публичный и приватный). 
+
+
+\begin{DoxyItemize}
+\item Использует функцию {\ttfamily crypto\+\_\+box\+\_\+keypair} для создания пары ключей, предназначенной для обмена ключами и шифрования (X25519).
+\item \begin{DoxyReturn}{Возвращает}
+QPair$<$\+QByte\+Array, QByte\+Array$>$ Пара, где первый элемент (first) — публичный ключ, а второй (second) — приватный (секретный) ключ. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{class_crypto_engine_a64ccd91ee4e3a2ee152f30989bea4979}\index{CryptoEngine@{CryptoEngine}!init@{init}}
+\index{init@{init}!CryptoEngine@{CryptoEngine}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{class_crypto_engine_a64ccd91ee4e3a2ee152f30989bea4979} 
+bool Crypto\+Engine::\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Инициализирует библиотеку libsodium. 
+
+
+\begin{DoxyItemize}
+\item Данную функцию необходимо вызвать один раз перед использованием любых других криптографических функций библиотеки. Безопасна для повторного вызова.
+\item \begin{DoxyReturn}{Возвращает}
+true Если библиотека успешно инициализирована (или уже была инициализирована). 
+
+false Если произошла критическая ошибка при инициализации. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Объявления и описания членов классов находятся в файлах:\+\begin{DoxyCompactItemize}
+\item 
+cryptoengine.\+h\item 
+cryptoengine.\+cpp\end{DoxyCompactItemize}

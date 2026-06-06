@@ -1,0 +1,63 @@
+\doxysection{mainwindow.\+h}
+\hypertarget{mainwindow_8h_source}{}\label{mainwindow_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MAINWINDOW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MAINWINDOW\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QtNetwork/QTcpServer>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QtNetwork/QTcpSocket>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QJsonObject>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QJsonDocument>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QJsonParseError>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}chatwindow.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QMessageBox>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}sodium.h"{}}}
+\DoxyCodeLine{00014\ QT\_BEGIN\_NAMESPACE}
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }Ui\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }MainWindow;}
+\DoxyCodeLine{00017\ \}}
+\DoxyCodeLine{00018\ QT\_END\_NAMESPACE}
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{MainWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \doxymbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{MainWindow}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00032\ \ \ \ \ \doxymbox{\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{\string~MainWindow}}();}
+\DoxyCodeLine{00033\ \ \ \ \ \doxymbox{\hyperlink{class_chat_window}{ChatWindow}}*\ chatWin;}
+\DoxyCodeLine{00034\ \ \ \ \ QTcpSocket*\ socket;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_main_window_1_1_clients_buff}{ClientsBuff}}}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ QString\ login;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ QString\ pass;}
+\DoxyCodeLine{00039\ \ \ \ \ \};}
+\DoxyCodeLine{00040\ \ \ \ \ QString\ login;}
+\DoxyCodeLine{00041\ \ \ \ \ QByteArray\ pendingData;}
+\DoxyCodeLine{00042\ \ \ \ \ QJsonDocument\ doc;}
+\DoxyCodeLine{00043\ \ \ \ \ QJsonParseError\ docError;}
+\DoxyCodeLine{00044\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_a27cf1bb58f9bae3ee1e14472c0de0969}{sockReady}}();}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_abfdc562b31ebb190211fba40fd85824e}{sockDisc}}();}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_a95c5779447a66e87120526d332aaef1f}{onConnected}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00051\ \ \ \ \ QString\ hashPassArgon(\textcolor{keyword}{const}\ QString\ \&pass);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ LoginUser();}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ VerifyPass(\textcolor{keyword}{const}\ QString\&\ pass,\ \textcolor{keyword}{const}\ QString\&\ storedHash);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ RegisterUser();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_pushButton\_clicked();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_pushButton\_2\_clicked();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_button\_reg\_clicked();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00063\ \ \ \ \ Ui::MainWindow\ *ui;}
+\DoxyCodeLine{00064\ \};}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAINWINDOW\_H}}
+
+\end{DoxyCode}

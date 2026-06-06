@@ -1,0 +1,233 @@
+\doxysection{chatwindow.\+h}
+\hypertarget{chatwindow_8h_source}{}\label{chatwindow_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CHATWINDOW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CHATWINDOW\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QDebug>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QPair>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QtNetwork/QTcpServer>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QtNetwork/QTcpSocket>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QSqlDatabase>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QSqlError>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QSqlQuery>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QJsonObject>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QJsonDocument>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QJsonParseError>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <QStandardItemModel>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <QJsonArray>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <QColor>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <QSoundEffect>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}cryptoengine.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}sodium.h"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <QPainter>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <QStylePainter>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <QStyledItemDelegate>}}
+\DoxyCodeLine{00026\ \textcolor{keyword}{namespace\ }Ui\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }ChatWindow;}
+\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_chat_window_a809db1dc7abb3f5f33cf1c2c2b45c677}{ChatWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_chat_window_a809db1dc7abb3f5f33cf1c2c2b45c677}{ChatWindow}}(QTcpSocket\ *nsocket,\ QString\ login,\ QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00041\ \ \ \ \ \doxymbox{\hyperlink{class_chat_window_a100c64a78603b3c65026acfd0b64ad19}{\string~ChatWindow}}();}
+\DoxyCodeLine{00042\ \ \ \ \ QTcpSocket\ *socket\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00043\ \ \ \ \ QJsonParseError\ error;}
+\DoxyCodeLine{00044\ \ \ \ \ QStandardItemModel\ *dialogsModel\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00045\ \ \ \ \ QStandardItemModel\ *messageModel\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00046\ \ \ \ \ QString\ myLogin;}
+\DoxyCodeLine{00047\ \ \ \ \ QSoundEffect\ *notifySound\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00048\ \ \ \ \ QVector<int>\ dialogs;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ myUserId;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ CurrentDialogId;}
+\DoxyCodeLine{00051\ \ \ \ \ QByteArray\ myPrivateKey;}
+\DoxyCodeLine{00052\ \ \ \ \ QByteArray\ myPublicKey;}
+\DoxyCodeLine{00053\ \ \ \ \ QSqlDatabase\ db;}
+\DoxyCodeLine{00054\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_chat_window_af1ab6555fbfb737ebe5a6f317553ab36}{sockReady}}();}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_chat_window_ab2be3101c12324c98b29f3669ae9f3b3}{sockDisc}}();}
+\DoxyCodeLine{00057\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00058\ \ \ \ \ QByteArray\ GetPublicKey(\textcolor{keywordtype}{int}\ userID,\ QString\ user\_login,\ \textcolor{keywordtype}{bool}\ flag\ =\ 0,\ \textcolor{keyword}{const}\ QByteArray\ \&public\_key\ =\ QByteArray());}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ CreateKey(QSqlDatabase\ \&db);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ playNotice();}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ markDialogUnread(\textcolor{keywordtype}{int}\ dialog\_id);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_sendmes\_clicked();}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ addMessage(\textcolor{keyword}{const}\ QString\ \&text,\ \textcolor{keywordtype}{bool}\ outgoing);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ handleOpenDialogResult(QString\ login,\ \textcolor{keywordtype}{int}\ dialog\_id);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_searchDialog\_clicked();}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ onClickedDialog(\textcolor{keyword}{const}\ QModelIndex\ \&index);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00069\ \ \ \ \ Ui::ChatWindow\ *ui;}
+\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ START:\ AI-\/DESIGN-\/GENERATION-\/CLAUDE-\/SONNET-\/4.6}}
+\DoxyCodeLine{00072\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_bubble_message_delegate}{BubbleMessageDelegate}}\ :\ \textcolor{keyword}{public}\ QStyledItemDelegate\ \{}
+\DoxyCodeLine{00073\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{using\ }QStyledItemDelegate::QStyledItemDelegate;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ PAD\_H\ \ =\ 12;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ PAD\_V\ \ =\ 8;}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MARGIN\ =\ 14;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ Фиксированная\ максимальная\ ширина\ пузыря\ в\ пикселях}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ НЕ\ зависит\ от\ option.rect.width()\ который\ может\ быть\ 0}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ FIXED\_MAX\_BUBBLE\_W\ =\ 400;}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ paint(QPainter\ *painter,}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ QStyleOptionViewItem\ \&option,}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ QModelIndex\ \&index)\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00086\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ painter-\/>save();}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ painter-\/>setRenderHint(QPainter::Antialiasing,\ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false});}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ painter-\/>setRenderHint(QPainter::TextAntialiasing,\ \ \ \ \ \ \textcolor{keyword}{false});}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ painter-\/>setRenderHint(QPainter::SmoothPixmapTransform,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ isMe\ =\ index.data(Qt::UserRole\ +\ 5).toBool();}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ QString\ text\ =\ index.data(Qt::DisplayRole).toString();}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (text.isEmpty())\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ painter-\/>restore();}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ──\ Шрифт\ ────────────────────────────────────────────────}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ QFont\ font\ =\ option.font;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ font.setFamily(\textcolor{stringliteral}{"{}Press\ Start\ 2P"{}});}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ font.setPixelSize(9);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ QFontMetrics\ fm(font);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ──\ Геометрия\ ─────────────────────────────────────────────}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Реальная\ доступная\ ширина\ —\ из\ option.rect}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Если\ rect\ пустой\ —\ используем\ fallback}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ availW\ =\ (option.rect.width()\ >\ 10)}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ option.rect.width()}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ 600;}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ maxBubbleW\ =\ qMin(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(availW\ *\ 0.62),}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FIXED\_MAX\_BUBBLE\_W);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ QRect\ textBound\ =\ fm.boundingRect(}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ QRect(0,\ 0,\ maxBubbleW\ -\/\ PAD\_H\ *\ 2,\ 0),}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ Qt::TextWordWrap\ |\ Qt::AlignLeft,}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ text}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bw\ =\ qMin(textBound.width()\ +\ PAD\_H\ *\ 2,\ maxBubbleW);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bh\ =\ textBound.height()\ +\ PAD\_V\ *\ 2;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ bw\ =\ qMax(bw,\ 80);}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ bh\ =\ qMax(bh,\ 30);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ yTop\ =\ option.rect.top()\ +\ 5;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ xBox\ =\ isMe}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ option.rect.right()\ -\/\ bw\ -\/\ MARGIN}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ option.rect.left()\ \ +\ MARGIN;}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Защита\ от\ выхода\ за\ границы}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (xBox\ <\ option.rect.left())}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ xBox\ =\ option.rect.left()\ +\ MARGIN;}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ QRect\ box(xBox,\ yTop,\ bw,\ bh);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ──\ Тень\ ─────────────────────────────────────────────────}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ painter-\/>fillRect(box.adjusted(3,\ 3,\ 3,\ 3),\ QColor(0,\ 0,\ 0,\ 160));}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ──\ Заливка\ ───────────────────────────────────────────────}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ QColor\ fill\ \ =\ isMe\ ?\ QColor(\textcolor{stringliteral}{"{}\#1a3a08"{}})\ :\ QColor(\textcolor{stringliteral}{"{}\#0f0f0a"{}});}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ QColor\ inner\ =\ isMe\ ?\ QColor(\textcolor{stringliteral}{"{}\#1e3d0a"{}})\ :\ QColor(\textcolor{stringliteral}{"{}\#111108"{}});}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ painter-\/>fillRect(box,\ fill);}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ painter-\/>fillRect(box.adjusted(2,\ 2,\ -\/2,\ -\/2),\ inner);}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ──\ Рамка\ (пиксельная,\ 2px)\ ───────────────────────────────}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ QColor\ hi\ =\ isMe\ ?\ QColor(\textcolor{stringliteral}{"{}\#aaff44"{}})\ :\ QColor(\textcolor{stringliteral}{"{}\#2a4a12"{}});}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ QColor\ lo\ =\ isMe\ ?\ QColor(\textcolor{stringliteral}{"{}\#3a6010"{}})\ :\ QColor(\textcolor{stringliteral}{"{}\#0a0f04"{}});}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ top}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ painter-\/>fillRect(box.left(),\ box.top(),\ box.width(),\ 2,\ hi);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ left}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ painter-\/>fillRect(box.left(),\ box.top(),\ 2,\ box.height(),\ hi);}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bottom}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ painter-\/>fillRect(box.left(),\ box.bottom()\ -\/\ 1,\ box.width(),\ 2,\ lo);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ right}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ painter-\/>fillRect(box.right()\ -\/\ 1,\ box.top(),\ 2,\ box.height(),\ lo);}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ──\ Хвостик\ (пиксельные\ квадраты\ 4x4)\ ────────────────────}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ ts\ =\ 4;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isMe)\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ painter-\/>fillRect(box.right()\ +\ 1,\ \ \ \ \ \ box.bottom()\ -\/\ ts,\ \ \ \ \ \ ts,\ ts,\ hi);}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ painter-\/>fillRect(box.right()\ +\ ts\ +\ 1,\ box.bottom()\ -\/\ ts\ *\ 2,\ \ ts,\ ts,\ hi);}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ painter-\/>fillRect(box.left()\ -\/\ ts\ -\/\ 1,\ \ \ \ \ \ box.bottom()\ -\/\ ts,\ \ \ \ \ ts,\ ts,\ hi);}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ painter-\/>fillRect(box.left()\ -\/\ ts\ *\ 2\ -\/\ 1,\ \ box.bottom()\ -\/\ ts\ *\ 2,\ ts,\ ts,\ hi);}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ──\ Префикс\ ───────────────────────────────────────────────}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ QFont\ pf;}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ pf.setFamily(\textcolor{stringliteral}{"{}Courier\ New"{}});}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ pf.setPixelSize(11);}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ pf.setBold(\textcolor{keyword}{true});}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ painter-\/>setFont(pf);}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ painter-\/>setPen(isMe\ ?\ QColor(\textcolor{stringliteral}{"{}\#aaff44"{}})\ :\ QColor(\textcolor{stringliteral}{"{}\#556622"{}}));}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ QString\ prefix\ =\ isMe\ ?\ \textcolor{stringliteral}{"{}>"{}}\ :\ \textcolor{stringliteral}{"{}<"{}};}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isMe)\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ painter-\/>drawText(}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ QRect(box.left()\ -\/\ 14,\ yTop,\ 12,\ 16),}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Qt::AlignRight\ |\ Qt::AlignTop,\ prefix);}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ painter-\/>drawText(}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ QRect(box.right()\ +\ 2,\ yTop,\ 12,\ 16),}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Qt::AlignLeft\ \ |\ Qt::AlignTop,\ prefix);}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ──\ Текст\ ─────────────────────────────────────────────────}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ QRect\ textRect\ =\ box.adjusted(PAD\_H,\ PAD\_V,\ -\/PAD\_H,\ -\/PAD\_V);}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ painter-\/>setFont(font);}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ painter-\/>setPen(isMe\ ?\ QColor(\textcolor{stringliteral}{"{}\#ccff88"{}})\ :\ QColor(\textcolor{stringliteral}{"{}\#99aa77"{}}));}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ painter-\/>drawText(}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ textRect,}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ Qt::TextWordWrap\ |\ Qt::AlignLeft\ |\ Qt::AlignTop,}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ text}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ painter-\/>restore();}
+\DoxyCodeLine{00201\ \ \ \ \ \}}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ QSize\ sizeHint(\textcolor{keyword}{const}\ QStyleOptionViewItem\ \&option,}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ QModelIndex\ \&index)\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00205\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ QString\ text\ =\ index.data(Qt::DisplayRole).toString();}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (text.isEmpty())}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ QSize(option.rect.width(),\ 40);}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ QFont\ font\ =\ option.font;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ font.setFamily(\textcolor{stringliteral}{"{}Press\ Start\ 2P"{}});}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ font.setPixelSize(9);}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ QFontMetrics\ fm(font);}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ключевой\ фикс:\ не\ используем\ option.rect.width()\ если\ он\ 0}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ availW\ =\ (option.rect.width()\ >\ 10)}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ option.rect.width()}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ 600;}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ maxBubbleW\ =\ qMin(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(availW\ *\ 0.62),}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FIXED\_MAX\_BUBBLE\_W);}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ QRect\ b\ =\ fm.boundingRect(}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ QRect(0,\ 0,\ maxBubbleW\ -\/\ PAD\_H\ *\ 2,\ 0),}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ Qt::TextWordWrap\ |\ Qt::AlignLeft,}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ text}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ h\ =\ b.height()\ +\ PAD\_V\ *\ 2\ +\ 10\ +\ 10;}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ QSize(availW,\ qMax(h,\ 44));}
+\DoxyCodeLine{00231\ \ \ \ \ \}}
+\DoxyCodeLine{00232\ \};}
+\DoxyCodeLine{00233\ \textcolor{comment}{//\ ::END}}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CHATWINDOW\_H}}
+
+\end{DoxyCode}

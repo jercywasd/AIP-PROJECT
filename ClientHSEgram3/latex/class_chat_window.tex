@@ -1,0 +1,161 @@
+\doxysection{Класс Chat\+Window}
+\hypertarget{class_chat_window}{}\label{class_chat_window}\index{ChatWindow@{ChatWindow}}
+
+
+Класс главного окна чата клиентского приложения.  
+
+
+
+
+{\ttfamily \+\#include $<$chatwindow.\+h$>$}
+
+Граф наследования:\+Chat\+Window:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_chat_window}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые слоты}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_chat_window_af1ab6555fbfb737ebe5a6f317553ab36}{sock\+Ready}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки входящих данных из сокета (ready\+Read). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_chat_window_ab2be3101c12324c98b29f3669ae9f3b3}{sock\+Disc}} ()
+\begin{DoxyCompactList}\small\item\em Слот-\/обработчик закрытия/\+разрыва сетевого соединения. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_chat_window_a809db1dc7abb3f5f33cf1c2c2b45c677}{Chat\+Window}} (QTcp\+Socket \texorpdfstring{$\ast$}{*}nsocket, QString login, QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \doxylink{class_chat_window}{Chat\+Window}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_chat_window_a100c64a78603b3c65026acfd0b64ad19}{\texorpdfstring{$\sim$}{\string~}\+Chat\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Деструктор класса \doxylink{class_chat_window}{Chat\+Window}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_chat_window_afc4825a530ab4a13f602e4af45f8a3b7}\label{class_chat_window_afc4825a530ab4a13f602e4af45f8a3b7} 
+QTcp\+Socket \texorpdfstring{$\ast$}{*} {\bfseries socket} = nullptr
+\item 
+\Hypertarget{class_chat_window_a6b336ed10f7f71d9cb22fa935af11e50}\label{class_chat_window_a6b336ed10f7f71d9cb22fa935af11e50} 
+QJson\+Parse\+Error {\bfseries error}
+\item 
+\Hypertarget{class_chat_window_a217ee248e00b7bfd950c1e26536f8be8}\label{class_chat_window_a217ee248e00b7bfd950c1e26536f8be8} 
+QStandard\+Item\+Model \texorpdfstring{$\ast$}{*} {\bfseries dialogs\+Model} = nullptr
+\item 
+\Hypertarget{class_chat_window_ab14619baf93fd52a8fd57b9e00f890c1}\label{class_chat_window_ab14619baf93fd52a8fd57b9e00f890c1} 
+QStandard\+Item\+Model \texorpdfstring{$\ast$}{*} {\bfseries message\+Model} = nullptr
+\item 
+\Hypertarget{class_chat_window_afc93e403c45e0c41459bbd3699ac490e}\label{class_chat_window_afc93e403c45e0c41459bbd3699ac490e} 
+QString {\bfseries my\+Login}
+\item 
+\Hypertarget{class_chat_window_a639ae729d1287ee4f5b645efa84ce02f}\label{class_chat_window_a639ae729d1287ee4f5b645efa84ce02f} 
+QSound\+Effect \texorpdfstring{$\ast$}{*} {\bfseries notify\+Sound} = nullptr
+\item 
+\Hypertarget{class_chat_window_a472183270ceb9dd1655c9881dab693d8}\label{class_chat_window_a472183270ceb9dd1655c9881dab693d8} 
+QVector$<$ int $>$ {\bfseries dialogs}
+\item 
+\Hypertarget{class_chat_window_a9573e40f759c1c5bb411300eaf9b512e}\label{class_chat_window_a9573e40f759c1c5bb411300eaf9b512e} 
+int {\bfseries my\+User\+Id}
+\item 
+\Hypertarget{class_chat_window_a6645742c839f27e9f41bb09074ab980e}\label{class_chat_window_a6645742c839f27e9f41bb09074ab980e} 
+int {\bfseries Current\+Dialog\+Id}
+\item 
+\Hypertarget{class_chat_window_a1cbcc3b7486308e6b24356f9e9f80f73}\label{class_chat_window_a1cbcc3b7486308e6b24356f9e9f80f73} 
+QByte\+Array {\bfseries my\+Private\+Key}
+\item 
+\Hypertarget{class_chat_window_af23d6e9666a83cebbada834903d793b2}\label{class_chat_window_af23d6e9666a83cebbada834903d793b2} 
+QByte\+Array {\bfseries my\+Public\+Key}
+\item 
+\Hypertarget{class_chat_window_a994b386e4b534b0bdec33bd3f7784c82}\label{class_chat_window_a994b386e4b534b0bdec33bd3f7784c82} 
+QSql\+Database {\bfseries db}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс главного окна чата клиентского приложения. 
+
+
+\begin{DoxyItemize}
+\item Обеспечивает логику интерфейса, шифрование сообщений «из конца в конец» (E2E), работу с локальной БД и сетевое взаимодействие. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_chat_window_doc-constructors}
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_chat_window_a809db1dc7abb3f5f33cf1c2c2b45c677}\index{ChatWindow@{ChatWindow}!ChatWindow@{ChatWindow}}
+\index{ChatWindow@{ChatWindow}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{ChatWindow()}{ChatWindow()}}
+{\footnotesize\ttfamily \label{class_chat_window_a809db1dc7abb3f5f33cf1c2c2b45c677} 
+Chat\+Window::\+\+Chat\+Window (\begin{DoxyParamCaption}\item[{QTcp\+Socket \texorpdfstring{$\ast$}{*}}]{nsocket}{, }\item[{QString}]{login}{, }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Конструктор класса \doxylink{class_chat_window}{Chat\+Window}. 
+
+
+\begin{DoxyItemize}
+\item Инициализирует пользовательский интерфейс, настраивает сетевые соединения (сигналы и слоты), загружает звуковые уведомления, инициализирует локальную базу данных SQLite, проверяет наличие криптографических ключей и отправляет стартовый пакет на сервер.
+\item 
+\begin{DoxyParams}{Аргументы}
+{\em nsocket} & Указатель на объект QTcp\+Socket для обмена данными с сервером. \\
+\hline
+{\em login} & Логин текущего пользователя. \\
+\hline
+{\em parent} & Указатель на родительский виджет. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{class_chat_window_a100c64a78603b3c65026acfd0b64ad19}\index{ChatWindow@{ChatWindow}!````~ChatWindow@{\texorpdfstring{$\sim$}{\string~}ChatWindow}}
+\index{````~ChatWindow@{\texorpdfstring{$\sim$}{\string~}ChatWindow}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ChatWindow()}{\string~ChatWindow()}}
+{\footnotesize\ttfamily \label{class_chat_window_a100c64a78603b3c65026acfd0b64ad19} 
+Chat\+Window::\+\texorpdfstring{$\sim$}{\string~}\+Chat\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Деструктор класса \doxylink{class_chat_window}{Chat\+Window}. 
+
+
+\begin{DoxyItemize}
+\item Освобождает ресурсы, выделенные под пользовательский интерфейс. 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{class_chat_window_doc-func-members}
+\doxysubsection{Методы}
+\Hypertarget{class_chat_window_ab2be3101c12324c98b29f3669ae9f3b3}\index{ChatWindow@{ChatWindow}!sockDisc@{sockDisc}}
+\index{sockDisc@{sockDisc}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{sockDisc}{sockDisc}}
+{\footnotesize\ttfamily \label{class_chat_window_ab2be3101c12324c98b29f3669ae9f3b3} 
+void Chat\+Window::\+sock\+Disc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот-\/обработчик закрытия/\+разрыва сетевого соединения. 
+
+
+\begin{DoxyItemize}
+\item Планирует безопасное удаление объекта {\ttfamily QTcp\+Socket} через механизм {\ttfamily delete\+Later()}. 
+\end{DoxyItemize}\Hypertarget{class_chat_window_af1ab6555fbfb737ebe5a6f317553ab36}\index{ChatWindow@{ChatWindow}!sockReady@{sockReady}}
+\index{sockReady@{sockReady}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{sockReady}{sockReady}}
+{\footnotesize\ttfamily \label{class_chat_window_af1ab6555fbfb737ebe5a6f317553ab36} 
+void Chat\+Window::\+sock\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки входящих данных из сокета (ready\+Read). 
+
+
+\begin{DoxyItemize}
+\item Читает сырые данные от сервера, парсит их в JSON и распределяет обработку в зависимости от поля "{}type"{}:\+
+\item "{}start"{}:\+ инициализация диалогов текущего пользователя.
+\item "{}message\+To"{}:\+ обработка входящего сообщения (дешифрование и вывод на экран или инкремент счетчика непрочитанных).
+\item "{}find\+\_\+dialog"{}:\+ обработка результата поиска/\+создания диалога.
+\item "{}get\+\_\+public\+\_\+key"{}:\+ получение и сохранение публичного ключа собеседника.
+\item "{}history\+\_\+result"{}:\+ загрузка, дешифрование и отображение истории сообщений. 
+\end{DoxyItemize}
+
+Объявления и описания членов классов находятся в файлах:\+\begin{DoxyCompactItemize}
+\item 
+chatwindow.\+h\item 
+chatwindow.\+cpp\end{DoxyCompactItemize}

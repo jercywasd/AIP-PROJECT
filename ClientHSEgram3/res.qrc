@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/photos">
+        <file alias="HSEgramLOGO">flux-2-klein-9b_b_erase_a_background_f.jpeg</file>
+        <file>sword_16.png</file>
+    </qresource>
+    <qresource prefix="/styles">
+        <file>style.qss</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>PressStart2P-Regular.ttf</file>
+    </qresource>
+    <qresource prefix="/sounds">
+        <file>notify.wav</file>
+    </qresource>
+</RCC>

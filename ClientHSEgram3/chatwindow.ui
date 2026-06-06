@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ChatWindow</class>
+ <widget class="QMainWindow" name="ChatWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>1060</width><height>700</height></rect>
+  </property>
+  <property name="minimumSize">
+   <size><width>820</width><height>540</height></size>
+  </property>
+  <property name="windowTitle">
+   <string>[ SECURE CHAT - DUNGEON MESSENGER ]</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow { background-color: #0a0a0a; }</string>
+  </property>
+
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget#centralwidget { background-color: #0a0a0a; }</string>
+   </property>
+
+   <layout class="QVBoxLayout" name="vl_root">
+    <property name="spacing"><number>0</number></property>
+    <property name="leftMargin"><number>0</number></property>
+    <property name="topMargin"><number>0</number></property>
+    <property name="rightMargin"><number>0</number></property>
+    <property name="bottomMargin"><number>0</number></property>
+
+    <!-- СКАНЛАЙН СВЕРХУ -->
+    <item>
+     <widget class="QWidget" name="topScanline">
+      <property name="minimumHeight"><number>4</number></property>
+      <property name="maximumHeight"><number>4</number></property>
+      <property name="styleSheet">
+       <string notr="true">QWidget {
+    background: qlineargradient(x1:0,y1:0,x2:1,y2:0,
+        stop:0.0 #aaff44, stop:0.5 #66aa22, stop:1.0 #aaff44);
+}</string>
+      </property>
+     </widget>
+    </item>
+
+    <!-- ОСНОВНОЙ LAYOUT -->
+    <item>
+     <layout class="QHBoxLayout" name="hl_main">
+      <property name="spacing"><number>0</number></property>
+      <property name="leftMargin"><number>0</number></property>
+      <property name="topMargin"><number>0</number></property>
+      <property name="rightMargin"><number>0</number></property>
+      <property name="bottomMargin"><number>0</number></property>
+
+      <!-- ======== ЛЕВАЯ ПАНЕЛЬ ======== -->
+      <item>
+       <widget class="QWidget" name="leftPanel">
+        <property name="minimumWidth"><number>260</number></property>
+        <property name="maximumWidth"><number>300</number></property>
+        <property name="styleSheet">
+         <string notr="true">QWidget#leftPanel {
+    background-color: #080808;
+    border-right: 2px solid #1e2a08;
+}</string>
+        </property>
+
+        <layout class="QVBoxLayout" name="vl_left">
+         <property name="spacing"><number>0</number></property>
+         <property name="leftMargin"><number>0</number></property>
+         <property name="topMargin"><number>0</number></property>
+         <property name="rightMargin"><number>0</number></property>
+         <property name="bottomMargin"><number>0</number></property>
+
+         <!-- Шапка левой панели -->
+         <item>
+          <widget class="QWidget" name="leftHeader">
+           <property name="minimumHeight"><number>64</number></property>
+           <property name="maximumHeight"><number>64</number></property>
+           <property name="styleSheet">
+            <string notr="true">QWidget#leftHeader {
+    background-color: #050505;
+    border-bottom: 2px solid #1e2a08;
+}</string>
+           </property>
+
+           <layout class="QHBoxLayout" name="hl_lh">
+            <property name="leftMargin"><number>10</number></property>
+            <property name="rightMargin"><number>10</number></property>
+            <property name="topMargin"><number>0</number></property>
+            <property name="bottomMargin"><number>0</number></property>
+            <property name="spacing"><number>8</number></property>
+
+            <!-- Аватар -->
+            <item>
+             <widget class="QLabel" name="label_my_avatar">
+              <property name="text"><string>[@]</string></property>
+              <property name="alignment">
+               <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+              </property>
+              <property name="minimumSize">
+               <size><width>36</width><height>36</height></size>
+              </property>
+              <property name="maximumSize">
+               <size><width>36</width><height>36</height></size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: #0f1a04;
+    border: 2px solid #3a5a18;
+    border-right-color: #1a2a08;
+    border-bottom-color: #1a2a08;
+    color: #aaff44;
+    font-family: 'Courier New';
+    font-size: 12px;
+    font-weight: bold;
+}</string>
+              </property>
+             </widget>
+            </item>
+
+            <!-- Имя героя -->
+            <item>
+             <layout class="QVBoxLayout" name="vl_hero_block">
+              <property name="spacing"><number>2</number></property>
+              <item>
+               <widget class="QLabel" name="lbl_hero">
+                <property name="text"><string>HERO:</string></property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+    color: #446622;
+    font-size: 6px;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="line_name">
+                <property name="readOnly"><bool>true</bool></property>
+                <property name="minimumHeight"><number>18</number></property>
+                <property name="maximumHeight"><number>18</number></property>
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit {
+    background: transparent;
+    border: none;
+    color: #aaff44;
+    font-family: 'Press Start 2P';
+    font-size: 8px;
+    padding: 0;
+    margin: 0;
+}</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+
+            <!-- Спейсер -->
+            <item>
+             <spacer name="sp_lh">
+              <property name="orientation"><enum>Qt::Horizontal</enum></property>
+             </spacer>
+            </item>
+
+            <!-- HP индикатор -->
+            <item>
+             <widget class="QLabel" name="label_hp">
+              <property name="text"><string>HP:███</string></property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    color: #aaff44;
+    font-size: 6px;
+    background: transparent;
+    font-family: 'Courier New';
+}</string>
+              </property>
+             </widget>
+            </item>
+
+           </layout>
+          </widget>
+         </item>
+
+         <!-- Поиск -->
+         <item>
+          <widget class="QWidget" name="searchWidget">
+           <property name="styleSheet">
+            <string notr="true">QWidget#searchWidget { background: transparent; }</string>
+           </property>
+           <layout class="QHBoxLayout" name="hl_search">
+            <property name="leftMargin"><number>8</number></property>
+            <property name="rightMargin"><number>8</number></property>
+            <property name="topMargin"><number>8</number></property>
+            <property name="bottomMargin"><number>6</number></property>
+            <property name="spacing"><number>6</number></property>
+            <item>
+             <widget class="QLineEdit" name="addDialog">
+              <property name="placeholderText">
+               <string>&gt; find_player_</string>
+              </property>
+              <property name="minimumHeight"><number>34</number></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="searchDialog">
+              <property name="text"><string>+</string></property>
+              <property name="minimumSize">
+               <size><width>34</width><height>34</height></size>
+              </property>
+              <property name="maximumSize">
+               <size><width>34</width><height>34</height></size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+
+         <!-- Метка списка -->
+         <item>
+          <widget class="QLabel" name="lbl_party">
+           <property name="text"><string>&gt;&gt; PARTY MEMBERS</string></property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    color: #3a5a18;
+    font-size: 6px;
+    background: transparent;
+    padding-left: 10px;
+    padding-bottom: 2px;
+}</string>
+           </property>
+          </widget>
+         </item>
+
+         <!-- Список диалогов -->
+         <item>
+          <widget class="QListView" name="dialogs">
+           <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+           <property name="lineWidth"><number>0</number></property>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QListView {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 2px 4px;
+}
+QListView::item {
+    color: #8aaa60;
+    padding: 8px 10px;
+    border-bottom: 1px solid #111108;
+    font-size: 7px;
+    min-height: 36px;
+}
+QListView::item:selected {
+    background-color: #0f1a04;
+    color: #aaff44;
+    border-left: 3px solid #aaff44;
+    border-bottom: 1px solid #2a3a10;
+}
+QListView::item:hover:!selected {
+    background-color: #0b0f04;
+    color: #aabb88;
+}</string>
+           </property>
+          </widget>
+         </item>
+
+         <!-- Нижняя подпись -->
+         <item>
+          <widget class="QLabel" name="lbl_left_footer">
+           <property name="text">
+            <string>[ LIBSODIUM E2E ] [ XSalsa20 ]</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    color: #1e2a08;
+    font-size: 6px;
+    background: #050505;
+    padding: 4px 0;
+    border-top: 1px solid #1a2a08;
+}</string>
+           </property>
+          </widget>
+         </item>
+
+        </layout>
+       </widget>
+      </item>
+
+      <!-- ======== ПРАВАЯ ПАНЕЛЬ (ЧАТ) ======== -->
+      <item>
+       <widget class="QWidget" name="rightPanel">
+        <property name="styleSheet">
+         <string notr="true">QWidget#rightPanel { background-color: #0a0a0a; }</string>
+        </property>
+
+        <layout class="QVBoxLayout" name="vl_right">
+         <property name="spacing"><number>0</number></property>
+         <property name="leftMargin"><number>0</number></property>
+         <property name="topMargin"><number>0</number></property>
+         <property name="rightMargin"><number>0</number></property>
+         <property name="bottomMargin"><number>0</number></property>
+
+         <!-- Шапка чата -->
+         <item>
+          <widget class="QWidget" name="headerPanel">
+           <property name="minimumHeight"><number>64</number></property>
+           <property name="maximumHeight"><number>64</number></property>
+           <property name="styleSheet">
+            <string notr="true">QWidget#headerPanel {
+    background-color: #050505;
+    border-bottom: 2px solid #1e2a08;
+}</string>
+           </property>
+
+           <layout class="QHBoxLayout" name="hl_hdr">
+            <property name="leftMargin"><number>14</number></property>
+            <property name="rightMargin"><number>14</number></property>
+            <property name="topMargin"><number>0</number></property>
+            <property name="bottomMargin"><number>0</number></property>
+            <property name="spacing"><number>12</number></property>
+
+            <!-- Аватар собеседника -->
+            <item>
+             <widget class="QLabel" name="label_partner_avatar">
+              <property name="text"><string>[?]</string></property>
+              <property name="alignment">
+               <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+              </property>
+              <property name="minimumSize">
+               <size><width>38</width><height>38</height></size>
+              </property>
+              <property name="maximumSize">
+               <size><width>38</width><height>38</height></size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: #0f1a04;
+    border: 2px solid #3a5a18;
+    border-right-color: #1a2a08;
+    border-bottom-color: #1a2a08;
+    color: #aaff44;
+    font-family: 'Courier New';
+    font-size: 14px;
+    font-weight: bold;
+}</string>
+              </property>
+             </widget>
+            </item>
+
+            <!-- Инфо о собеседнике -->
+            <item>
+             <layout class="QVBoxLayout" name="vl_partner_info">
+              <property name="spacing"><number>2</number></property>
+
+              <item>
+               <widget class="QLabel" name="lbl_talking_to">
+                <property name="text"><string>TALKING TO:</string></property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+    color: #446622;
+    font-size: 6px;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}</string>
+                </property>
+               </widget>
+              </item>
+
+              <item>
+               <widget class="QLineEdit" name="user_id_line">
+                <property name="readOnly"><bool>true</bool></property>
+                <property name="minimumHeight"><number>18</number></property>
+                <property name="maximumHeight"><number>18</number></property>
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit {
+    background: transparent;
+    border: none;
+    color: #aaff44;
+    font-family: 'Press Start 2P';
+    font-size: 8px;
+    padding: 0;
+    margin: 0;
+}</string>
+                </property>
+               </widget>
+              </item>
+
+              <item>
+               <widget class="QLabel" name="label_enc_status">
+                <property name="text">
+                 <string>[ CHANNEL: ENCRYPTED ] [ KEY: E2E ]</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+    color: #446622;
+    font-size: 6px;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}</string>
+                </property>
+               </widget>
+              </item>
+
+             </layout>
+            </item>
+
+            <!-- Спейсер -->
+            <item>
+             <spacer name="sp_hdr">
+              <property name="orientation"><enum>Qt::Horizontal</enum></property>
+             </spacer>
+            </item>
+
+            <!-- Иконки статуса -->
+            <item>
+             <widget class="QLabel" name="lbl_icons">
+              <property name="text"><string>[ HH ]  [ * LVL 1 ]</string></property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    color: #aaff44;
+    font-family: 'Courier New';
+    font-size: 10px;
+    background: transparent;
+}</string>
+              </property>
+             </widget>
+            </item>
+
+           </layout>
+          </widget>
+         </item>
+
+         <!-- ОБЛАСТЬ СООБЩЕНИЙ -->
+         <item>
+          <widget class="QListView" name="dialog">
+           <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+           <property name="lineWidth"><number>0</number></property>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QListView {
+    background-color: #0a0a0a;
+    border: none;
+    outline: none;
+    padding: 6px 2px;
+}
+QListView::item {
+    background: transparent;
+    border: none;
+    padding: 0;
+}</string>
+           </property>
+          </widget>
+         </item>
+
+         <!-- ПАНЕЛЬ ВВОДА -->
+         <item>
+          <widget class="QWidget" name="inputPanel">
+           <property name="minimumHeight"><number>68</number></property>
+           <property name="maximumHeight"><number>68</number></property>
+           <property name="styleSheet">
+            <string notr="true">QWidget#inputPanel {
+    background-color: #080808;
+    border-top: 2px solid #1e2a08;
+}</string>
+           </property>
+
+           <layout class="QHBoxLayout" name="hl_inp">
+            <property name="leftMargin"><number>12</number></property>
+            <property name="rightMargin"><number>12</number></property>
+            <property name="topMargin"><number>12</number></property>
+            <property name="bottomMargin"><number>12</number></property>
+            <property name="spacing"><number>10</number></property>
+
+            <!-- Префикс -->
+            <item>
+             <widget class="QLabel" name="lbl_prompt">
+              <property name="text"><string>&gt;_</string></property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    color: #aaff44;
+    font-size: 10px;
+    background: transparent;
+    font-family: 'Courier New';
+    font-weight: bold;
+}</string>
+              </property>
+             </widget>
+            </item>
+
+            <!-- Поле ввода -->
+            <item>
+             <widget class="QLineEdit" name="message_line">
+              <property name="placeholderText"><string>type message_</string></property>
+              <property name="minimumHeight"><number>42</number></property>
+              <property name="styleSheet">
+               <string notr="true">QLineEdit {
+    background-color: #0d0d08;
+    border: 2px solid #2a3a10;
+    border-right-color: #111a04;
+    border-bottom-color: #111a04;
+    border-left-color: #3a5a18;
+    border-top-color: #3a5a18;
+    border-radius: 0px;
+    color: #aaff44;
+    padding: 4px 12px;
+    font-size: 8px;
+    font-family: 'Press Start 2P';
+}
+QLineEdit:focus {
+    border-color: #aaff44;
+    border-right-color: #5a8a20;
+    border-bottom-color: #5a8a20;
+    border-left-color: #ccff66;
+    border-top-color: #ccff66;
+    background-color: #0f0f0a;
+}</string>
+              </property>
+             </widget>
+            </item>
+
+            <!-- Кнопка отправки -->
+            <item>
+             <widget class="QPushButton" name="sendmes">
+              <property name="text"><string></string></property>
+              <property name="minimumSize">
+               <size><width>44</width><height>44</height></size>
+              </property>
+              <property name="maximumSize">
+               <size><width>44</width><height>44</height></size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>Отправить [Enter]</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton#sendmes {
+    background-color: #1a2a08;
+    border: 2px solid #5a8a20;
+    border-right-color: #1a3a08;
+    border-bottom-color: #1a3a08;
+    border-left-color: #8acc30;
+    border-top-color: #8acc30;
+    border-radius: 0px;
+}
+QPushButton#sendmes:hover {
+    background-color: #243a0c;
+}
+QPushButton#sendmes:pressed {
+    background-color: #111a06;
+    border-right-color: #8acc30;
+    border-bottom-color: #8acc30;
+    border-left-color: #1a3a08;
+    border-top-color: #1a3a08;
+    padding-top: 2px;
+    padding-left: 2px;
+}</string>
+              </property>
+             </widget>
+            </item>
+
+           </layout>
+          </widget>
+         </item>
+
+        </layout>
+       </widget>
+      </item>
+
+     </layout>
+    </item>
+
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

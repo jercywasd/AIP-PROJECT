@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>440</width><height>580</height></rect>
+  </property>
+  <property name="minimumSize">
+   <size><width>440</width><height>580</height></size>
+  </property>
+  <property name="maximumSize">
+   <size><width>440</width><height>580</height></size>
+  </property>
+  <property name="windowTitle">
+   <string>[ SECURE CHAT v0.1 ]</string>
+  </property>
+
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget#centralwidget { background-color: #0a0a0a; }</string>
+   </property>
+
+   <layout class="QVBoxLayout" name="vl_main">
+    <property name="spacing"><number>0</number></property>
+    <property name="leftMargin"><number>0</number></property>
+    <property name="topMargin"><number>0</number></property>
+    <property name="rightMargin"><number>0</number></property>
+    <property name="bottomMargin"><number>0</number></property>
+
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex"><number>0</number></property>
+
+      <!-- ======== PAGE LOGIN ======== -->
+      <widget class="QWidget" name="pageLogin">
+       <property name="styleSheet">
+        <string notr="true">QWidget#pageLogin { background-color: #0a0a0a; }</string>
+       </property>
+
+       <layout class="QVBoxLayout" name="vl_login_outer">
+        <property name="spacing"><number>0</number></property>
+        <property name="leftMargin"><number>0</number></property>
+        <property name="topMargin"><number>0</number></property>
+        <property name="rightMargin"><number>0</number></property>
+        <property name="bottomMargin"><number>0</number></property>
+
+        <!-- Сканлайн-шапка -->
+        <item>
+         <widget class="QWidget" name="scanlineHeader">
+          <property name="minimumHeight"><number>6</number></property>
+          <property name="maximumHeight"><number>6</number></property>
+          <property name="styleSheet">
+           <string notr="true">QWidget {
+    background: qlineargradient(
+        x1:0,y1:0,x2:1,y2:0,
+        stop:0.00 #aaff44,
+        stop:0.15 #88cc33,
+        stop:0.30 #aaff44,
+        stop:0.45 #66aa22,
+        stop:0.60 #aaff44,
+        stop:0.75 #88cc33,
+        stop:1.00 #aaff44);
+}</string>
+          </property>
+         </widget>
+        </item>
+
+        <item>
+         <spacer name="sp_top">
+          <property name="orientation"><enum>Qt::Vertical</enum></property>
+          <property name="sizeHint" stdset="0"><size><width>20</width><height>30</height></size></property>
+         </spacer>
+        </item>
+
+        <!-- ASCII-арт заголовок -->
+        <item>
+         <layout class="QHBoxLayout" name="hl_ascii">
+          <item>
+           <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="vl_ascii">
+            <property name="spacing"><number>8</number></property>
+            <item>
+             <widget class="QLabel" name="label_ascii1">
+              <property name="text">
+               <string>███████╗ ██████╗██╗  ██╗ █████╗ ████████╗</string>
+              </property>
+              <property name="alignment"><set>Qt::AlignHCenter|Qt::AlignVCenter</set></property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    color: #aaff44;
+    font-family: 'Courier New';
+    font-size: 7px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    background: transparent;
+}</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_ascii2">
+              <property name="text">
+               <string>╚════██║██╔════╝██║  ██║██╔══██╗╚══██╔══╝</string>
+              </property>
+              <property name="alignment"><set>Qt::AlignHCenter|Qt::AlignVCenter</set></property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    color: #88cc33;
+    font-family: 'Courier New';
+    font-size: 7px;
+    font-weight: bold;
+    background: transparent;
+}</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_ascii3">
+              <property name="text">
+               <string>    ███╔╝██║     ███████║███████║   ██║   </string>
+              </property>
+              <property name="alignment"><set>Qt::AlignHCenter|Qt::AlignVCenter</set></property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    color: #aaff44;
+    font-family: 'Courier New';
+    font-size: 7px;
+    font-weight: bold;
+    background: transparent;
+}</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_ascii4">
+              <property name="text">
+               <string>   ███╔╝ ██║     ██╔══██║██╔══██║   ██║   </string>
+              </property>
+              <property name="alignment"><set>Qt::AlignHCenter|Qt::AlignVCenter</set></property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    color: #88cc33;
+    font-family: 'Courier New';
+    font-size: 7px;
+    font-weight: bold;
+    background: transparent;
+}</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_ascii5">
+              <property name="text">
+               <string>███████╗╚██████╗██║  ██║██║  ██║   ██║   </string>
+              </property>
+              <property name="alignment"><set>Qt::AlignHCenter|Qt::AlignVCenter</set></property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    color: #aaff44;
+    font-family: 'Courier New';
+    font-size: 7px;
+    font-weight: bold;
+    background: transparent;
+}</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_subtitle_login">
+              <property name="text">
+               <string>&gt;&gt; SECURE MESSENGER v0.1 [ E2E ENCRYPTED ] &lt;&lt;</string>
+              </property>
+              <property name="alignment"><set>Qt::AlignHCenter|Qt::AlignVCenter</set></property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    color: #446622;
+    font-family: 'Press Start 2P';
+    font-size: 6px;
+    background: transparent;
+    padding-top: 6px;
+}</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer>
+          </item>
+         </layout>
+        </item>
+
+        <item>
+         <spacer name="sp_mid">
+          <property name="orientation"><enum>Qt::Vertical</enum></property>
+          <property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property>
+         </spacer>
+        </item>
+
+        <!-- Карточка логина -->
+        <item>
+         <layout class="QHBoxLayout" name="hl_card_l">
+          <property name="leftMargin"><number>36</number></property>
+          <property name="rightMargin"><number>36</number></property>
+          <item>
+           <widget class="QFrame" name="loginCard">
+            <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+            <property name="styleSheet">
+             <string notr="true">QFrame#loginCard {
+    background-color: #080808;
+    border: 2px solid #2a3a10;
+    border-right-color:  #0f1a04;
+    border-bottom-color: #0f1a04;
+    border-left-color:   #3a5a18;
+    border-top-color:    #3a5a18;
+}</string>
+            </property>
+            <layout class="QVBoxLayout" name="vl_card_l">
+             <property name="spacing"><number>12</number></property>
+             <property name="leftMargin"><number>24</number></property>
+             <property name="topMargin"><number>24</number></property>
+             <property name="rightMargin"><number>24</number></property>
+             <property name="bottomMargin"><number>24</number></property>
+
+             <!-- Заголовок карточки -->
+             <item>
+              <widget class="QLabel" name="label_card_title">
+               <property name="text"><string>[ IDENTIFICATION ]</string></property>
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+    color: #aaff44;
+    font-size: 8px;
+    background: transparent;
+    padding-bottom: 4px;
+}</string>
+               </property>
+              </widget>
+             </item>
+
+             <!-- Разделитель -->
+             <item>
+              <widget class="QLabel" name="sep1">
+               <property name="text"><string>────────────────────────────────</string></property>
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+    color: #2a3a10;
+    font-family: 'Courier New';
+    font-size: 8px;
+    background: transparent;
+}</string>
+               </property>
+              </widget>
+             </item>
+
+             <!-- Логин метка -->
+             <item>
+              <widget class="QLabel" name="lbl_login">
+               <property name="text"><string>&gt; LOGIN_ID:</string></property>
+               <property name="styleSheet">
+                <string notr="true">QLabel { color: #668833; font-size: 7px; background: transparent; }</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="login_line">
+               <property name="placeholderText"><string>enter_login_</string></property>
+               <property name="minimumHeight"><number>38</number></property>
+              </widget>
+             </item>
+
+             <!-- Пароль метка -->
+             <item>
+              <widget class="QLabel" name="lbl_pass">
+               <property name="text"><string>&gt; PASSWORD:</string></property>
+               <property name="styleSheet">
+                <string notr="true">QLabel { color: #668833; font-size: 7px; background: transparent; }</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="pass_line">
+               <property name="placeholderText"><string>enter_pass_</string></property>
+               <property name="echoMode"><enum>QLineEdit::Password</enum></property>
+               <property name="minimumHeight"><number>38</number></property>
+              </widget>
+             </item>
+
+             <!-- Разделитель -->
+             <item>
+              <widget class="QLabel" name="sep2">
+               <property name="text"><string>────────────────────────────────</string></property>
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+    color: #2a3a10;
+    font-family: 'Courier New';
+    font-size: 8px;
+    background: transparent;
+}</string>
+               </property>
+              </widget>
+             </item>
+
+             <!-- Кнопка войти -->
+             <item>
+              <widget class="QPushButton" name="pushButton">
+               <property name="text"><string>[ ENTER DUNGEON ]</string></property>
+               <property name="minimumHeight"><number>42</number></property>
+               <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+              </widget>
+             </item>
+
+             <!-- Кнопка регистрация -->
+             <item>
+              <widget class="QPushButton" name="pushButton_2">
+               <property name="text"><string>[ NEW ADVENTURER ]</string></property>
+               <property name="minimumHeight"><number>38</number></property>
+               <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: #050505;
+    color: #668833;
+    border: 2px solid #1e2a08;
+    border-right-color:  #0a0f04;
+    border-bottom-color: #0a0f04;
+    border-left-color:   #2a4010;
+    border-top-color:    #2a4010;
+    font-family: 'Press Start 2P';
+    font-size: 7px;
+}
+QPushButton:hover {
+    color: #aaff44;
+    border-color: #5a8a20;
+    border-right-color:  #1a3a08;
+    border-bottom-color: #1a3a08;
+    border-left-color:   #7aaa30;
+    border-top-color:    #7aaa30;
+}</string>
+               </property>
+              </widget>
+             </item>
+
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+
+        <item>
+         <spacer name="sp_bot">
+          <property name="orientation"><enum>Qt::Vertical</enum></property>
+          <property name="sizeHint" stdset="0"><size><width>20</width><height>30</height></size></property>
+         </spacer>
+        </item>
+
+        <!-- Нижняя строка статуса -->
+        <item>
+         <widget class="QLabel" name="label_statusbar">
+          <property name="text"><string>[ SYS: WAITING FOR CONNECTION... ]     [ CRYPTO: LIBSODIUM ]     [ VER: 0.1 ]</string></property>
+          <property name="alignment"><set>Qt::AlignHCenter|Qt::AlignVCenter</set></property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: #2a3a10;
+    font-size: 6px;
+    background: #050505;
+    padding: 4px 0;
+    border-top: 1px solid #1a2a08;
+}</string>
+          </property>
+         </widget>
+        </item>
+
+       </layout>
+      </widget>
+
+      <!-- ======== PAGE REG ======== -->
+      <widget class="QWidget" name="pageReg">
+       <property name="styleSheet">
+        <string notr="true">QWidget#pageReg { background-color: #0a0a0a; }</string>
+       </property>
+
+       <layout class="QVBoxLayout" name="vl_reg_outer">
+        <property name="spacing"><number>0</number></property>
+        <property name="leftMargin"><number>0</number></property>
+        <property name="topMargin"><number>0</number></property>
+        <property name="rightMargin"><number>0</number></property>
+        <property name="bottomMargin"><number>0</number></property>
+
+        <item>
+         <widget class="QWidget" name="scanlineHeader2">
+          <property name="minimumHeight"><number>6</number></property>
+          <property name="maximumHeight"><number>6</number></property>
+          <property name="styleSheet">
+           <string notr="true">QWidget {
+    background: qlineargradient(
+        x1:0,y1:0,x2:1,y2:0,
+        stop:0.0  #aaff44,
+        stop:0.5  #66aa22,
+        stop:1.0  #aaff44);
+}</string>
+          </property>
+         </widget>
+        </item>
+
+        <item>
+         <spacer>
+          <property name="orientation"><enum>Qt::Vertical</enum></property>
+          <property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property>
+         </spacer>
+        </item>
+
+        <!-- Заголовок -->
+        <item>
+         <widget class="QLabel" name="label_reg_header">
+          <property name="text"><string>[ CREATE NEW CHARACTER ]</string></property>
+          <property name="alignment"><set>Qt::AlignHCenter|Qt::AlignVCenter</set></property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: #aaff44;
+    font-size: 9px;
+    background: transparent;
+    padding-bottom: 8px;
+}</string>
+          </property>
+         </widget>
+        </item>
+
+        <item>
+         <spacer>
+          <property name="orientation"><enum>Qt::Vertical</enum></property>
+          <property name="sizeHint" stdset="0"><size><width>20</width><height>10</height></size></property>
+         </spacer>
+        </item>
+
+        <!-- Карточка регистрации -->
+        <item>
+         <layout class="QHBoxLayout" name="hl_card_r">
+          <property name="leftMargin"><number>36</number></property>
+          <property name="rightMargin"><number>36</number></property>
+          <item>
+           <widget class="QFrame" name="regCard">
+            <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+            <property name="styleSheet">
+             <string notr="true">QFrame#regCard {
+    background-color: #080808;
+    border: 2px solid #2a3a10;
+    border-right-color:  #0f1a04;
+    border-bottom-color: #0f1a04;
+    border-left-color:   #3a5a18;
+    border-top-color:    #3a5a18;
+}</string>
+            </property>
+            <layout class="QVBoxLayout" name="vl_card_r">
+             <property name="spacing"><number>12</number></property>
+             <property name="leftMargin"><number>24</number></property>
+             <property name="topMargin"><number>24</number></property>
+             <property name="rightMargin"><number>24</number></property>
+             <property name="bottomMargin"><number>24</number></property>
+
+             <item>
+              <widget class="QLabel" name="lbl_rl">
+               <property name="text"><string>&gt; HERO_NAME:</string></property>
+               <property name="styleSheet">
+                <string notr="true">QLabel { color: #668833; font-size: 7px; background: transparent; }</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="line_reg_login">
+               <property name="placeholderText"><string>choose_name_  (min 4)</string></property>
+               <property name="minimumHeight"><number>38</number></property>
+              </widget>
+             </item>
+
+             <item>
+              <widget class="QLabel" name="lbl_rp">
+               <property name="text"><string>&gt; SECRET_CODE:</string></property>
+               <property name="styleSheet">
+                <string notr="true">QLabel { color: #668833; font-size: 7px; background: transparent; }</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="line_reg_pass">
+               <property name="placeholderText"><string>choose_pass_  (min 8)</string></property>
+               <property name="echoMode"><enum>QLineEdit::Password</enum></property>
+               <property name="minimumHeight"><number>38</number></property>
+              </widget>
+             </item>
+
+             <item>
+              <widget class="QLabel" name="lbl_rrp">
+               <property name="text"><string>&gt; CONFIRM_CODE:</string></property>
+               <property name="styleSheet">
+                <string notr="true">QLabel { color: #668833; font-size: 7px; background: transparent; }</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="line_reg_repass">
+               <property name="placeholderText"><string>repeat_pass_</string></property>
+               <property name="echoMode"><enum>QLineEdit::Password</enum></property>
+               <property name="minimumHeight"><number>38</number></property>
+              </widget>
+             </item>
+
+             <item>
+              <widget class="QLabel" name="sep_reg">
+               <property name="text"><string>────────────────────────────────</string></property>
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+    color: #2a3a10;
+    font-family: 'Courier New';
+    font-size: 8px;
+    background: transparent;
+}</string>
+               </property>
+              </widget>
+             </item>
+
+             <item>
+              <widget class="QPushButton" name="button_reg">
+               <property name="text"><string>[ FORGE CHARACTER ]</string></property>
+               <property name="minimumHeight"><number>42</number></property>
+               <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+              </widget>
+             </item>
+
+             <item>
+              <widget class="QPushButton" name="button_back_to_login">
+               <property name="text"><string>&lt; BACK TO INN</string></property>
+               <property name="minimumHeight"><number>36</number></property>
+               <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: transparent;
+    color: #446622;
+    border: none;
+    font-family: 'Press Start 2P';
+    font-size: 7px;
+}
+QPushButton:hover {
+    color: #aaff44;
+}</string>
+               </property>
+              </widget>
+             </item>
+
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+
+        <item>
+         <spacer>
+          <property name="orientation"><enum>Qt::Vertical</enum></property>
+          <property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property>
+         </spacer>
+        </item>
+
+        <item>
+         <widget class="QLabel" name="label_statusbar2">
+          <property name="text"><string>[ SYS: WAITING FOR CONNECTION... ]     [ CRYPTO: LIBSODIUM ]     [ VER: 0.1 ]</string></property>
+          <property name="alignment"><set>Qt::AlignHCenter|Qt::AlignVCenter</set></property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: #2a3a10;
+    font-size: 6px;
+    background: #050505;
+    padding: 4px 0;
+    border-top: 1px solid #1a2a08;
+}</string>
+          </property>
+         </widget>
+        </item>
+
+       </layout>
+      </widget>
+
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
